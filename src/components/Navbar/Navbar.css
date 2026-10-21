@@ -1,0 +1,193 @@
+/* ═══ NAVBAR — CELESTIAL TITANIUM × AURORA BLUE ═══ */
+
+.aurum-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-overlay, 100);
+  background: rgba(8, 13, 23, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle, #293B51);
+  transition: all 0.3s ease;
+}
+
+.aurum-navbar--scrolled {
+  background: rgba(8, 13, 23, 0.96);
+  border-bottom-color: var(--border-bright, #3D5370);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+}
+
+.aurum-navbar-inner {
+  max-width: 1440px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 12px clamp(16px, 2.5vw, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.aurum-navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.aurum-brand-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aurum-brand-name {
+  font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-primary, #F0F5FC);
+}
+
+.aurum-brand-badge {
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  color: var(--blue-electric, #4DA8FF);
+  padding: 2px 7px;
+  border: 1px solid rgba(77, 168, 255, 0.35);
+  border-radius: var(--radius-sm);
+  background: rgba(77, 168, 255, 0.12);
+  font-weight: 700;
+}
+
+.aurum-navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.aurum-navbar-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary, #A8B7CB);
+  transition: all 0.2s;
+  border: 1px solid transparent;
+  font-weight: 500;
+}
+
+.aurum-navbar-link:hover {
+  color: var(--text-primary, #F0F5FC);
+  background: var(--bg-surface, #121F31);
+  border-color: var(--border-bright, #3D5370);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.aurum-navbar-link--active {
+  color: #FFFFFF;
+  background: var(--bg-surface, #121F31);
+  border-color: var(--blue-electric, #4DA8FF);
+  box-shadow: 0 0 14px rgba(77, 168, 255, 0.25);
+  font-weight: 700;
+}
+
+.aurum-navbar-link--active .aurum-link-id {
+  color: var(--blue-electric, #4DA8FF);
+  opacity: 1;
+}
+
+.aurum-navbar-link--active .aurum-link-label {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.aurum-link-id {
+  font-size: 9px;
+  color: var(--blue-electric, #4DA8FF);
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.aurum-link-label {
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.aurum-navbar-cmd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--bg-surface, #121F31);
+  border: 1px solid var(--border-subtle, #293B51);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary, #F0F5FC);
+  transition: all 0.2s;
+  flex-shrink: 0;
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+
+.aurum-navbar-cmd:hover {
+  background: var(--bg-elevated, #18283C);
+  border-color: var(--blue-electric, #4DA8FF);
+  box-shadow: 0 0 14px rgba(77, 168, 255, 0.22);
+  color: #FFFFFF;
+}
+
+.aurum-cmd-key {
+  font-size: 10px;
+  padding: 1px 6px;
+  background: var(--bg-secondary, #0D1625);
+  border: 1px solid var(--border-subtle, #293B51);
+  border-radius: 3px;
+  color: var(--cyan-ice, #83E7FF);
+  font-weight: 700;
+}
+
+.aurum-cmd-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.aurum-navbar-progress {
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.aurum-navbar-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4DA8FF, #83E7FF);
+  box-shadow: 0 0 8px rgba(77, 168, 255, 0.6);
+  transition: width 0.1s linear;
+}
+
+@media (max-width: 1380px) {
+  .aurum-navbar-link {
+    padding: 6px 8px;
+  }
+  .aurum-navbar-links {
+    gap: 3px;
+  }
+}
+
+@media (max-width: 1220px) {
+  .aurum-navbar-links {
+    display: none;
+  }
+}
