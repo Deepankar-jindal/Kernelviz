@@ -1,0 +1,85 @@
+/* ═══ CURSOR — CELESTIAL TITANIUM PRECISION INSTRUMENT ═══ */
+
+.kv-cursor-dot,
+.kv-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: var(--z-cursor, 9999);
+  will-change: transform;
+}
+
+.kv-cursor-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue-electric, #4DA8FF);
+  box-shadow: 0 0 10px rgba(77, 168, 255, 0.7);
+  transition: width 0.15s ease, height 0.15s ease, background 0.15s ease, opacity 0.15s ease, border-radius 0.15s ease;
+}
+
+.kv-cursor-ring {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(77, 168, 255, 0.45);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, opacity 0.2s ease;
+}
+
+/* Hover: CTA / button */
+.kv-cursor-dot--hover-cta {
+  background: var(--cyan-ice, #83E7FF);
+  width: 8px;
+  height: 8px;
+  box-shadow: 0 0 14px rgba(131, 231, 255, 0.8);
+}
+
+.kv-cursor-ring--hover-cta {
+  width: 44px;
+  height: 44px;
+  border-color: var(--blue-electric, #4DA8FF);
+  box-shadow: 0 0 14px rgba(77, 168, 255, 0.3);
+}
+
+/* Hover: viz/canvas */
+.kv-cursor-dot--hover-viz {
+  background: var(--copper-metallic, #D6A66B);
+  width: 5px;
+  height: 5px;
+  box-shadow: 0 0 10px rgba(214, 166, 107, 0.8);
+}
+
+.kv-cursor-ring--hover-viz {
+  border-radius: 4px;
+  width: 26px;
+  height: 26px;
+  border-color: rgba(214, 166, 107, 0.6);
+  box-shadow: 0 0 10px rgba(214, 166, 107, 0.25);
+}
+
+/* Hover: terminal */
+.kv-cursor-dot--hover-terminal {
+  width: 2px;
+  height: 16px;
+  border-radius: 1px;
+  background: var(--cyan-ice, #83E7FF);
+  box-shadow: 0 0 6px rgba(131, 231, 255, 0.6);
+}
+.kv-cursor-ring--hover-terminal { opacity: 0; }
+
+/* Clicking */
+.kv-cursor-dot--clicking {
+  transform-origin: center;
+  background: #FFFFFF;
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.9);
+}
+
+.kv-cursor-ring--clicking {
+  transform: scale(0.75);
+  border-color: var(--cyan-ice, #83E7FF);
+}
+
+@media (hover: none) {
+  .kv-cursor-dot, .kv-cursor-ring { display: none; }
+}
