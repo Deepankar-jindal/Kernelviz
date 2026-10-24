@@ -1,0 +1,171 @@
+/* ═══════════════════════════════════════════════════════════
+   KERNELVIZ — CELESTIAL TITANIUM × AURORA BLUE SIMULATION LAYOUT
+   Deep Navy (#080D17) × Titanium Surfaces (#121F31) × Electric Blue (#4DA8FF)
+   ═══════════════════════════════════════════════════════════ */
+
+.sim-page {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--bg-primary, #080D17);
+  color: var(--text-primary, #F0F5FC);
+  padding-top: 72px; /* clearance for fixed navbar */
+  overflow-x: hidden;
+}
+
+/* Ambient visual effects */
+.sim-ambient-grid {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(41, 59, 81, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41, 59, 81, 0.25) 1px, transparent 1px);
+  background-size: 54px 54px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sim-glow-radial {
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(77, 168, 255, 0.10) 0%, rgba(131, 231, 255, 0.04) 45%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sim-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px clamp(16px, 3vw, 40px) 80px;
+  box-sizing: border-box;
+}
+
+/* ── Simulation Hero Header ──────────────────────────────── */
+.sim-header {
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border-subtle, #293B51);
+  padding-bottom: 24px;
+}
+
+.sim-header-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.sim-number-tag {
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue-electric, #4DA8FF);
+  letter-spacing: 0.18em;
+}
+
+.sim-tag-line {
+  height: 1px;
+  width: 40px;
+  background: linear-gradient(90deg, var(--blue-electric, #4DA8FF), transparent);
+}
+
+.sim-title {
+  font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+  font-size: clamp(26px, 3.2vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  margin: 0 0 12px 0;
+  color: var(--text-primary, #F0F5FC);
+  background: none;
+  -webkit-text-fill-color: initial;
+}
+
+.sim-desc {
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: clamp(12px, 1.1vw, 14px);
+  color: var(--text-secondary, #A8B7CB);
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0;
+}
+
+/* ── Content Container ───────────────────────────────────── */
+.sim-content {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+/* Eliminate nested section padding and solid background on simulation pages */
+.sim-content .lab-section {
+  min-height: auto;
+  padding: 0;
+  background: transparent !important;
+  border: none;
+}
+
+.sim-content .lab-section > .container {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* ── Simulation Footer ───────────────────────────────────── */
+.sim-footer {
+  margin-top: 64px;
+  padding: 24px 28px;
+  background: var(--bg-surface, #121F31);
+  border: 1px solid var(--border-subtle, #293B51);
+  border-radius: var(--radius-md, 10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+.sim-footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.sim-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sim-footer-title {
+  font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-primary, #F0F5FC);
+}
+
+.sim-footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.sim-footer-link {
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary, #A8B7CB);
+  cursor: pointer;
+  transition: color 0.15s ease;
+  font-weight: 500;
+}
+
+.sim-footer-link:hover {
+  color: var(--blue-electric, #4DA8FF);
+}
