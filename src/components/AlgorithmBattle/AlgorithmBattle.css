@@ -1,0 +1,80 @@
+/* ═══ ALGORITHM BATTLE — AURUM COMMAND ═══ */
+
+.battle-subtext {
+  font-size: 15px;
+  color: var(--text-secondary, #c2bdb1);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.battle-workload-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.battle-proc {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 16px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-sm);
+  background: rgba(13, 13, 18, 0.6);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-cream, #e2ded4);
+}
+
+.battle-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 20px;
+}
+
+.battle-metric-block {
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.battle-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.battle-bar-name {
+  font-family: var(--font-mono);
+  width: 64px;
+  font-size: 11px;
+  font-weight: 600;
+  flex-shrink: 0;
+  color: var(--text-ivory, #f5f2eb);
+}
+
+.battle-bar-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.battle-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  opacity: 0.9;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+}
+
+.battle-bar-val {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  min-width: 64px;
+  text-align: right;
+  flex-shrink: 0;
+  color: var(--gold-champagne, #f3e5ab);
+}
