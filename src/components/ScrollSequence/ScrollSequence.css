@@ -1,0 +1,385 @@
+/* ═══ ARCHITECTURE PIPELINE (Replacing Image Sequence) ═══ */
+
+.arch-pipeline-section {
+  padding: 100px 0;
+  background: var(--bg-graphite, #0d0d12);
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(212, 175, 55, 0.12);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+.arch-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 48px;
+}
+
+.arch-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--gold-metallic, #d4af37);
+  padding: 4px 14px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-full);
+  background: rgba(212, 175, 55, 0.05);
+  margin-bottom: 16px;
+}
+
+.arch-title {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--text-ivory, #f5f2eb);
+  margin-bottom: 14px;
+}
+
+.arch-title-gold {
+  background: linear-gradient(135deg, #ffffff 0%, #f3e5ab 40%, #d4af37 80%, #ebd17c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.arch-sub {
+  font-size: 15px;
+  color: var(--text-secondary, #c2bdb1);
+  line-height: 1.6;
+}
+
+/* Stepper Navigation */
+.arch-stepper-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  padding: 12px 20px;
+  background: rgba(19, 19, 26, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(12px);
+}
+
+.arch-stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.arch-step-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+  transition: all 0.2s;
+}
+
+.arch-step-btn:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.arch-step-btn.selected {
+  border-color: var(--gold-metallic, #d4af37);
+  background: rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+.arch-step-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.arch-step-btn.selected .arch-step-circle {
+  background: var(--gold-metallic, #d4af37);
+  color: #070709;
+}
+
+.arch-step-btn.passed .arch-step-circle {
+  background: rgba(212, 175, 55, 0.3);
+  color: var(--gold-champagne);
+}
+
+.arch-step-name {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--text-cream);
+}
+
+.arch-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.arch-counter {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--gold-metallic, #d4af37);
+}
+
+/* Card Grid */
+.arch-card-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+}
+
+.arch-main-panel {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.arch-panel-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.arch-live-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--cyan-active, #22d3ee);
+}
+
+.arch-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan-active, #22d3ee);
+  box-shadow: 0 0 8px var(--cyan-active, #22d3ee);
+  animation: pulse-cyan 1.5s infinite;
+}
+
+.arch-stage-heading-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.arch-stage-number-big {
+  font-size: 56px;
+  font-weight: 300;
+  color: rgba(212, 175, 55, 0.4);
+  line-height: 0.9;
+}
+
+.arch-stage-title {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 600;
+  color: var(--text-ivory, #f5f2eb);
+  margin-bottom: 8px;
+}
+
+.arch-stage-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-secondary, #c2bdb1);
+}
+
+.arch-specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.arch-spec-box {
+  padding: 12px 14px;
+  background: rgba(13, 13, 18, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.arch-spec-label {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.arch-spec-val {
+  font-size: 12px;
+  color: var(--gold-champagne, #f3e5ab);
+  font-weight: 500;
+}
+
+.arch-panel-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+.arch-nav-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.arch-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.arch-nav-dot:hover {
+  background: rgba(212, 175, 55, 0.4);
+}
+
+.arch-nav-dot.active {
+  background: var(--gold-metallic, #d4af37);
+  box-shadow: 0 0 8px var(--gold-metallic);
+  transform: scale(1.2);
+}
+
+/* Right HUD Panel */
+.arch-hud-panel {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.arch-hud-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arch-registers-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(9, 9, 13, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+}
+
+.arch-reg-row {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.arch-reg-row:last-child {
+  border-bottom: none;
+}
+
+.arch-reg-key {
+  width: 110px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.arch-reg-arrow {
+  color: var(--gold-metallic);
+  margin-right: 12px;
+}
+
+.arch-reg-val {
+  color: var(--cyan-active, #22d3ee);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* Hardware Map Diagram */
+.arch-hw-diagram {
+  background: rgba(13, 13, 18, 0.5);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+}
+
+.arch-hw-label {
+  margin-bottom: 12px;
+}
+
+.arch-hw-blocks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.arch-hw-item {
+  flex: 1;
+  padding: 10px 6px;
+  text-align: center;
+  background: rgba(22, 22, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  transition: all 0.3s;
+}
+
+.arch-hw-item.highlight {
+  border-color: var(--gold-metallic, #d4af37);
+  background: rgba(212, 175, 55, 0.12);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+.arch-hw-chip-title {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-ivory);
+}
+
+.arch-hw-item.highlight .arch-hw-chip-title {
+  color: var(--gold-champagne);
+}
+
+.arch-hw-chip-sub {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: var(--text-muted);
+}
+
+.arch-hw-line {
+  width: 8px;
+  height: 1px;
+  background: rgba(212, 175, 55, 0.3);
+}
+
+@media (max-width: 1024px) {
+  .arch-card-grid { grid-template-columns: 1fr; }
+  .arch-stepper-wrap { flex-direction: column; align-items: stretch; }
+}
