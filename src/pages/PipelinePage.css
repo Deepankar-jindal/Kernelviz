@@ -1,0 +1,216 @@
+/* ═══════════════════════════════════════════════════════════
+   PIPELINE PAGE — INSTRUCTION EXECUTION & HAZARDS STYLES
+   ═══════════════════════════════════════════════════════════ */
+
+.pipe-controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 20px;
+  background: rgba(19, 19, 26, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  border-radius: var(--radius-md, 6px);
+  margin-bottom: 24px;
+}
+
+.pipe-mode-selector {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pipe-mode-btn {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm, 4px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary, #c2bdb1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pipe-mode-btn:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.3);
+  color: #ffffff;
+}
+
+.pipe-mode-btn.active {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--gold-metallic, #d4af37);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.25);
+}
+
+/* ── Hardware Stages Diagram ──────────────────────────────── */
+.pipe-hw-container {
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.pipe-stages-flow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+  position: relative;
+}
+
+@media (max-width: 900px) {
+  .pipe-stages-flow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pipe-stage-card {
+  background: rgba(13, 13, 18, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: var(--radius-md, 6px);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.pipe-stage-card.stage-busy {
+  border-color: var(--cyan-active, #22d3ee);
+  background: rgba(34, 211, 238, 0.04);
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.15);
+}
+
+.pipe-stage-card.stage-stall {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.06);
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.18);
+}
+
+.pipe-stage-name {
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold-metallic, #d4af37);
+  letter-spacing: 0.12em;
+  margin-bottom: 4px;
+}
+
+.pipe-stage-sub {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  color: var(--text-muted, #7c786e);
+  margin-bottom: 12px;
+}
+
+.pipe-stage-slot {
+  background: rgba(7, 7, 9, 0.85);
+  border: 1px dashed rgba(212, 175, 55, 0.25);
+  border-radius: var(--radius-sm, 4px);
+  padding: 10px;
+  min-height: 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pipe-stage-inst {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.pipe-stage-detail {
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  color: var(--cyan-active, #22d3ee);
+  margin-top: 2px;
+}
+
+/* ── Execution Over Time Matrix ───────────────────────────── */
+.pipe-matrix-panel {
+  padding: 24px;
+  overflow-x: auto;
+}
+
+.pipe-matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  min-width: 760px;
+}
+
+.pipe-matrix-table th {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+  text-align: center;
+  color: var(--gold-champagne, #f3e5ab);
+  background: rgba(13, 13, 18, 0.5);
+}
+
+.pipe-matrix-table th:first-child {
+  text-align: left;
+  width: 220px;
+}
+
+.pipe-matrix-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.pipe-matrix-table td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-ivory, #f5f2eb);
+}
+
+.pipe-cell-stage {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm, 3px);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.stage-if { background: rgba(59, 130, 246, 0.2); border: 1px solid rgba(59, 130, 246, 0.5); color: #60a5fa; }
+.stage-id { background: rgba(168, 85, 247, 0.2); border: 1px solid rgba(168, 85, 247, 0.5); color: #c084fc; }
+.stage-ex { background: rgba(234, 179, 8, 0.2);  border: 1px solid rgba(234, 179, 8, 0.5);  color: #facc15; }
+.stage-mem { background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.5); color: #34d399; }
+.stage-wb { background: rgba(236, 72, 153, 0.2); border: 1px solid rgba(236, 72, 153, 0.5); color: #f472b6; }
+.stage-stall-tag { background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; color: #f87171; }
+.stage-fwd-tag { background: rgba(34, 211, 238, 0.2); border: 1px solid #22d3ee; color: #22d3ee; }
+
+.pipe-col-active {
+  background: rgba(212, 175, 55, 0.08);
+}
+th.pipe-col-active {
+  background: rgba(212, 175, 55, 0.2);
+  color: #ffffff;
+}
+
+/* ── Telemetry Grid ──────────────────────────────────────── */
+.pipe-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.pipe-stat-box {
+  background: rgba(13, 13, 18, 0.7);
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  border-radius: var(--radius-md, 6px);
+  padding: 16px;
+}
+
+.pipe-stat-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 6px;
+}
