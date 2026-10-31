@@ -1,0 +1,91 @@
+/* ═══════════════════════════════════════════════════════════
+   FRAGMENTATION PAGE — INTERNAL & EXTERNAL ANALYSIS STYLES
+   ═══════════════════════════════════════════════════════════ */
+
+.frag-page-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.frag-tab-btn {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm, 4px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary, #c2bdb1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.frag-tab-btn:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.3);
+  color: #ffffff;
+}
+
+.frag-tab-btn.active {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--gold-metallic, #d4af37);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+}
+
+/* ── Fixed Partition Internal Frag Grid ──────────────────── */
+.internal-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.internal-card {
+  background: rgba(13, 13, 18, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: var(--radius-md, 6px);
+  padding: 16px;
+}
+
+.internal-bar-box {
+  background: rgba(7, 7, 9, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm, 4px);
+  height: 48px;
+  display: flex;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.internal-used-fill {
+  background: rgba(34, 211, 238, 0.25);
+  border-right: 2px solid var(--cyan-active, #22d3ee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.internal-wasted-fill {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(239, 68, 68, 0.15),
+    rgba(239, 68, 68, 0.15) 6px,
+    rgba(239, 68, 68, 0.3) 6px,
+    rgba(239, 68, 68, 0.3) 12px
+  );
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  color: #f87171;
+  font-weight: 700;
+}
