@@ -1,0 +1,21 @@
+<svg id="visual" viewBox="0 0 900 600" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+  <defs>
+    <!-- Expanded filter bounds to completely eliminate edge clipping artifacts -->
+    <filter id="blur1" x="-60%" y="-60%" width="220%" height="220%">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+      <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+      <feGaussianBlur stdDeviation="150" result="effect1_foregroundBlur"></feGaussianBlur>
+    </filter>
+  </defs>
+  <!-- Electric Blue (#4DA8FF) Vibrant Base -->
+  <rect width="900" height="600" fill="#4DA8FF"></rect>
+  <!-- Blurred Organic Cosmic Navy (#080D17) and Aurora Electric Blue (#4DA8FF) Orbs -->
+  <g filter="url(#blur1)">
+    <circle cx="862" cy="235" fill="#080D17" r="357"></circle>
+    <circle cx="526" cy="511" fill="#4DA8FF" r="357"></circle>
+    <circle cx="551" cy="168" fill="#080D17" r="357"></circle>
+    <circle cx="853" cy="473" fill="#080D17" r="357"></circle>
+    <circle cx="270" cy="357" fill="#4DA8FF" r="357"></circle>
+    <circle cx="61" cy="331" fill="#080D17" r="357"></circle>
+  </g>
+</svg>
